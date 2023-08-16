@@ -8,12 +8,11 @@ import 'package:machine/view/signout/signout_dialog.dart';
 import 'package:machine/view/videoplayer/player.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     var kheight = MediaQuery.of(context).size.height;
-    var kwidth = MediaQuery.of(context).size.width;
     return Container(
       decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -22,76 +21,30 @@ class HomeScreen extends StatelessWidget {
               colors: [Color.fromARGB(255, 5, 6, 8), Colors.white])),
       child: Scaffold(
           backgroundColor: Colors.transparent,
-          // appBar: AppBar(
-          //   backgroundColor: const Color.fromARGB(255, 6, 6, 7),
-          //   title: const Text(
-          //     'HomeScreen',
-          //     style: TextStyle(color: Colors.white),
-          //   ),
-          //   centerTitle: true,
-          //   actions: [
-          //     IconButton(
-          //         onPressed: () {
-          //           Get.dialog(const AlertDialog(
-          //             content: Signout(),
-          //           ));
-          //         },
-          //         icon: const Icon(
-          //           Icons.logout,
-          //           color: Colors.white,
-          //         ))
-          //   ],
-          // ),
+          appBar: AppBar(
+            backgroundColor: Colors.black.withOpacity(0.3),
+            title: const Text(
+              'HomeScreen',
+              style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+            centerTitle: true,
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Get.dialog(const AlertDialog(
+                      content: Signout(),
+                    ));
+                  },
+                  icon: const Icon(Icons.logout))
+            ],
+          ),
           body: SafeArea(
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  AnimatedContainer(
-                      duration: const Duration(microseconds: 1000),
-                      width: double.infinity,
-                      height: kheight * 0.1,
-                      color: Colors.black.withOpacity(0.3),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              SizedBox(width: kwidth * 0.02),
-                              CircleAvatar(
-                                radius: 15,
-                                backgroundColor: Colors.white,
-                                child: Image.asset(
-                                  'assets/images/play-button-28269.png',
-                                  width: 70,
-                                  height: 60,
-                                ),
-                              ),
-                              const Spacer(),
-                              IconButton(
-                                  onPressed: () {
-                                    Get.dialog(const AlertDialog(
-                                      content: Signout(),
-                                    ));
-                                  },
-                                  icon: const Icon(
-                                    Icons.logout,
-                                    color: Colors.white,
-                                  ))
-                            ],
-                          ),
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'HomeScreen',
-                                style: TextStyle(
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                            ],
-                          )
-                        ],
-                      )),
                   SizedBox(height: kheight * 0.03),
                   const Padding(
                     padding: EdgeInsets.all(10.0),

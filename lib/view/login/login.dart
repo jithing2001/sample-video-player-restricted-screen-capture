@@ -12,33 +12,43 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     var kheight = MediaQuery.of(context).size.height;
     var kwidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: SingleChildScrollView(
-          child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: kheight * 0.7,
-                width: kwidth * 1,
-                child: Lottie.asset('assets/images/animation_lldh6rcj.json'),
-              ),
-            ],
-          ),
-          ElevatedButton(
-              onPressed: () async {
-                UserCredential cred = await Authentication().signInWithGoogle();
+    return Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Color.fromARGB(255, 5, 6, 8), Colors.white])),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SingleChildScrollView(
+            child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: kheight * 0.7,
+                  width: kwidth * 0.9,
+                  child: Lottie.asset('assets/images/animation_lle6tgqn.json'),
+                ),
+              ],
+            ),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                onPressed: () async {
+                  UserCredential cred =
+                      await Authentication().signInWithGoogle();
 
-                if (cred != null) {
-                  Get.offAll(const HomeScreen());
-                } else {
-                  Get.snackbar('error', 'User null');
-                }
-              },
-              child: const Text('Signin With Google'))
-        ],
-      )),
+                  if (cred != null) {
+                    Get.offAll(HomeScreen());
+                  } else {
+                    Get.snackbar('error', 'User null');
+                  }
+                },
+                child: const Text('Signin With Google'))
+          ],
+        )),
+      ),
     );
   }
 }

@@ -16,7 +16,7 @@ class SplashScreen extends StatelessWidget {
       if (userLogin == null) {
         Get.off(const Login());
       } else {
-        Get.off(const HomeScreen());
+        Get.off( HomeScreen());
       }
     });
     return Scaffold(
